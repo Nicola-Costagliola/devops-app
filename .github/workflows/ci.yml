@@ -17,5 +17,5 @@ jobs:
           distribution: temurin
           java-version: 21
           cache: maven
-      - name: Build e test
+      - name: Build e Test
         run: ./mvnw -B verify
