@@ -24,7 +24,7 @@ jobs:
         run: ./mvnw -B verify
 
   docker:
-    needs: built-test
+    needs: build-test
     if: github.event_name != 'pull_request'
     runs-on: ubuntu-latest
     steps:
