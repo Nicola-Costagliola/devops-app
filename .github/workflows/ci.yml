@@ -41,7 +41,7 @@ jobs:
         uses: docker/scout-action@v1
         with:
           command: cves
-          image: ${{ env.IMAGE }}:${{ githbub.sha }}
+          image: ${{ env.IMAGE }}:${{ github.sha }}
           only-severities: critical
           only-fixed: true
           exit-code: true
