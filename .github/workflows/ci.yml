@@ -41,11 +41,7 @@ jobs:
 
           BRANCH_TAG=$(echo "$GITHUB_REF_NAME" | tr '/' '_')
 
-          docker build \
-            -f Dockerfile_v2 \
-            -t "${IMAGE}:${GITHUB_SHA}" \
-            -t "${IMAGE}:${BRANCH_TAG}" \
-            .
+          docker build -f Dockerfile_v2 -t "${IMAGE}:${GITHUB_SHA}" -t "${IMAGE}:${BRANCH_TAG}" .
       - name: Scan Docker Scout
         uses: docker/scout-action@v1
         with:
