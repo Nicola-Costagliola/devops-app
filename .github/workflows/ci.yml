@@ -35,8 +35,17 @@ jobs:
           password: ${{ secrets.DOCKERHUB_TOKEN }}
       - name: Build docker image
         run: |
+          echo "IMAGE is: '$IMAGE'"
+          echo "GITHUB_SHA is: '$GITHUB_SHA'"
+          echo "GITHUB_REF_NAME is: '$GITHUB_REF_NAME'"
+
           BRANCH_TAG=$(echo "$GITHUB_REF_NAME" | tr '/' '_')
-          docker build -f Dockerfile_v2 "$IMAGE:$GITHUB_SHA" -t "$IMAGE:$BRANCH_TAG" .
+
+          docker build \
+            -f Dockerfile_v2 \
+            -t "${IMAGE}:${GITHUB_SHA}" \
+            -t "${IMAGE}:${BRANCH_TAG}" \
+            .
       - name: Scan Docker Scout
         uses: docker/scout-action@v1
         with:
