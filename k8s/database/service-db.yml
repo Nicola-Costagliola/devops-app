@@ -6,6 +6,6 @@ metadata:
 spec:
   selector:
     app: db
-port:
-  - port: 5432
-    targetPort: 5432
+  ports:
+    - port: 5432
+      targetPort: 5432
